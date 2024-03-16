@@ -25,9 +25,6 @@ namespace Service
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
 
                     lista.Add(aux);
-                    //PRUEBA DE SUBIR LOS CAMBIOS
-                    return lista; //BORRAR DESPUES
-                    
 
                 }
                 return lista;
