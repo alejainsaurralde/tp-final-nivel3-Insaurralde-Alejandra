@@ -1,0 +1,6 @@
+C:\Users\aleja\OneDrive\Escritorio\TPFinalNivel2_Insaurralde\Dominio\bin\Debug\Dominio.dll
+C:\Users\aleja\OneDrive\Escritorio\TPFinalNivel2_Insaurralde\Dominio\bin\Debug\Dominio.pdb
+C:\Users\aleja\OneDrive\Escritorio\TPFinalNivel2_Insaurralde\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\aleja\OneDrive\Escritorio\TPFinalNivel2_Insaurralde\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\aleja\OneDrive\Escritorio\TPFinalNivel2_Insaurralde\Dominio\obj\Debug\Dominio.dll
+C:\Users\aleja\OneDrive\Escritorio\TPFinalNivel2_Insaurralde\Dominio\obj\Debug\Dominio.pdb
