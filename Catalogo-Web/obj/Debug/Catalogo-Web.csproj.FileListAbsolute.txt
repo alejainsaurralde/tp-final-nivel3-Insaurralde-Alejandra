@@ -57,3 +57,7 @@ C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Catalogo-Web\obj\Debug\Catalo
 C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Catalogo-Web\obj\Debug\Catalogo.1EF9A6BD.Up2Date
 C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Catalogo-Web\obj\Debug\Catalogo-Web.dll
 C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Catalogo-Web\obj\Debug\Catalogo-Web.pdb
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Catalogo-Web\bin\Dominio.dll
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Catalogo-Web\bin\Service.dll
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Catalogo-Web\bin\Dominio.pdb
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Catalogo-Web\bin\Service.pdb
