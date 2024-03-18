@@ -7,3 +7,12 @@ C:\Users\aleja\OneDrive\Escritorio\TPFinalNivel2_Insaurralde\Service\bin\Debug\D
 C:\Users\aleja\OneDrive\Escritorio\TPFinalNivel2_Insaurralde\Service\obj\Debug\Service.csproj.CopyComplete
 C:\Users\aleja\OneDrive\Escritorio\TPFinalNivel2_Insaurralde\Service\obj\Debug\Service.dll
 C:\Users\aleja\OneDrive\Escritorio\TPFinalNivel2_Insaurralde\Service\obj\Debug\Service.pdb
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\bin\Debug\Service.dll
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\bin\Debug\Service.pdb
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\bin\Debug\Dominio.dll
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\bin\Debug\Dominio.pdb
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\obj\Debug\Service.csproj.AssemblyReference.cache
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\obj\Debug\Service.csproj.Up2Date
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\obj\Debug\Service.dll
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\obj\Debug\Service.pdb

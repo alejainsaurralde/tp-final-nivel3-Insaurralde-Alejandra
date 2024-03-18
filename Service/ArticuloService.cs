@@ -61,6 +61,48 @@ namespace Service
             }
          
         }
+
+        public List<Articulo> listarConSP()
+        {
+            List<Articulo> lista = new List<Articulo>();
+            accesoDatos datos = new accesoDatos();
+            try
+            {
+                string consulta = "select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.IdMarca, A.IdCategoria from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id = A.IdMarca and C.Id = A.IdCategoria";
+
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                        aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+
+                    //aux.Marca = (string)lector["IdMarca"];   
+                    aux.Marca = (string)datos.Lector["Marca"];
+                    //aux.Categoria = (string)lector["IdCategoria"];
+                    aux.Categoria = (string)datos.Lector["Categoria"];
+                    aux.Precio = (decimal)datos.Lector["Precio"];
+
+
+                    lista.Add(aux);
+                }
+
+
+                return lista;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         public void agregar(Articulo nuevo)
         {
             accesoDatos datos = new accesoDatos();
