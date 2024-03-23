@@ -8,11 +8,11 @@
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
 
-        <%
+
+      <%--  LISTAR CON FOREACH--%>
+        <%--        <%
             foreach (Dominio.Articulo Art in ListaArticulo)
             {
-
-
         %>
 
         <div class="col">
@@ -29,6 +29,26 @@
             </div>
         </div>
 
-        <%  } %>
+        <%  } %>--%>
+
+        <asp:Repeater runat="server" ID="repRepetidor">
+            <ItemTemplate>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="<%#Eval("ImagenUrl")%>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><%#Eval("Nombre")%></h5>
+                            <p class="card-text"><%#Eval("Descripcion")%></p>
+                            <a href="DetalleArticulo.aspx?id=<%#Eval("id") %>">Ver detalles</a>
+                            <asp:Button CssClass="btn btn-primary" runat="server" ID="btnEjemplo" Text="Ejemplo" CommandArgument= '<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="btnEjemplo_Click" />
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
+
     </div>
 </asp:Content>

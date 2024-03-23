@@ -18,7 +18,16 @@ namespace Catalogo_Web
             ArticuloService service = new ArticuloService();
             ListaArticulo = service.listarConSP();
 
-           
+            if (!IsPostBack)
+            {
+                repRepetidor.DataSource = ListaArticulo;
+                repRepetidor.DataBind();
+            }
+        }
+
+        protected void btnEjemplo_Click(object sender, EventArgs e)
+        {
+            string valor = ((Button)sender).CommandArgument;
         }
     }
 }

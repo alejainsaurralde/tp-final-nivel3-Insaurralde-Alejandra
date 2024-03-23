@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 
+
 namespace Catalogo_Web
 {
     public partial class Master : System.Web.UI.MasterPage
