@@ -68,9 +68,12 @@ namespace Service
             accesoDatos datos = new accesoDatos();
             try
             {
-                string consulta = "select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.IdMarca, A.IdCategoria from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id = A.IdMarca and C.Id = A.IdCategoria";
+                //HITORICO
+                // string consulta = "select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.IdMarca, A.IdCategoria from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id = A.IdMarca and C.Id = A.IdCategoria";
+                // datos.setearConsulta(consulta);
 
-                datos.setearConsulta(consulta);
+                datos.setearProcedimiento("storedListar");
+
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -87,7 +90,7 @@ namespace Service
                     aux.Marca = (string)datos.Lector["Marca"];
                     //aux.Categoria = (string)lector["IdCategoria"];
                     aux.Categoria = (string)datos.Lector["Categoria"];
-                    aux.Precio = (decimal)datos.Lector["Precio"];
+                    //aux.Precio = (decimal)datos.Lector["Precio"];
 
 
                     lista.Add(aux);
@@ -119,6 +122,43 @@ namespace Service
 
             }
             catch (Exception  ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public void agregarConSP(Articulo nuevo)
+        {
+            accesoDatos datos = new accesoDatos();
+
+            try
+            {
+//                @codigo varchar(50),
+//@nombre varchar(50),
+//@descripcion varchar(150),
+//@idMarca int,
+//@idCategoria int,
+//@imagenUrl varchar(1000),
+//@precio money
+
+                datos.setearProcedimiento("storedAltaArticulo");
+                datos.setearParametro("@codigo", nuevo.Codigo);
+                datos.setearParametro("@nombre", nuevo.Nombre);
+                datos.setearParametro("@descripcion", nuevo.Descripcion);
+                datos.setearParametro("@idMarca", nuevo.Marca);
+                datos.setearParametro("@IdCategoria", nuevo.Categoria);
+                datos.setearParametro("@imagenUrl", nuevo.ImagenUrl);
+                //datos.setearParametro("@precio", nuevo.Precio);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
             {
 
                 throw ex;
