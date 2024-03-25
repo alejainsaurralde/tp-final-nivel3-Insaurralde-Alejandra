@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace Service
 {
-      public class ArticuloService
+    public class ArticuloService
     {
-        public List<Articulo> Listar()
+        public List<Articulo> Listar(string id = "")
         {
             List<Articulo> lista = new List<Articulo>();
             SqlConnection conexion = new SqlConnection();
@@ -25,13 +25,16 @@ namespace Service
             {
                 conexion.ConnectionString = "server =.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id = A.IdMarca and C.Id = A.IdCategoria";
+                comando.CommandText = "select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id = A.IdMarca and C.Id = A.IdCategoria ";
+
+                if (id != "")
+                    comando.CommandText += " and A.Id = " + id;
 
                 comando.Connection = conexion;
 
                 conexion.Open();
-                lector = comando.ExecuteReader(); 
-                
+                lector = comando.ExecuteReader();
+
                 while (lector.Read())
                 {
                     Articulo aux = new Articulo();
@@ -42,24 +45,24 @@ namespace Service
 
                     if (!(lector["ImagenUrl"] is DBNull))
                         aux.ImagenUrl = (string)lector["ImagenUrl"];
-  
-                    aux.Marca = (string)lector["Marca"];
-                    aux.Categoria= (string)lector["Categoria"];
-                    aux.Precio = (decimal)lector["Precio"];
-                    
 
-                    lista.Add(aux); 
+                    aux.Marca = (string)lector["Marca"];
+                    aux.Categoria = (string)lector["Categoria"];
+                    aux.Precio = (decimal)lector["Precio"];
+
+
+                    lista.Add(aux);
                 }
-                
+
                 conexion.Close();
                 return lista;
             }
             catch (Exception ex)
             {
                 throw ex;
-               
+
             }
-         
+
         }
 
         public List<Articulo> listarConSP()
@@ -112,16 +115,16 @@ namespace Service
 
             try
             {
-                datos.setearConsulta("insert into ARTICULOS(Codigo, Nombre, Descripcion, ImagenUrl, IdMarca, IdCategoria, Precio)values('"+ nuevo.Codigo +"', '"+ nuevo.Nombre +"', '"+ nuevo.Descripcion +"', @ImagenUrl,  @IdMarca, @IdCategoria, '"+ nuevo.Precio +"')");
+                datos.setearConsulta("insert into ARTICULOS(Codigo, Nombre, Descripcion, ImagenUrl, IdMarca, IdCategoria, Precio)values('" + nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', @ImagenUrl,  @IdMarca, @IdCategoria, '" + nuevo.Precio + "')");
                 datos.setearParametro("@ImagenUrl", nuevo.ImagenUrl);
-                datos.setearParametro("@IdMarca",nuevo.Marca);    
-                datos.setearParametro("@IdCategoria", nuevo.Categoria);           
+                datos.setearParametro("@IdMarca", nuevo.Marca);
+                datos.setearParametro("@IdCategoria", nuevo.Categoria);
 
 
                 datos.ejecutarAccion();
 
             }
-            catch (Exception  ex)
+            catch (Exception ex)
             {
 
                 throw ex;
@@ -139,13 +142,13 @@ namespace Service
 
             try
             {
-//                @codigo varchar(50),
-//@nombre varchar(50),
-//@descripcion varchar(150),
-//@idMarca int,
-//@idCategoria int,
-//@imagenUrl varchar(1000),
-//@precio money
+                //                @codigo varchar(50),
+                //@nombre varchar(50),
+                //@descripcion varchar(150),
+                //@idMarca int,
+                //@idCategoria int,
+                //@imagenUrl varchar(1000),
+                //@precio money
 
                 datos.setearProcedimiento("storedAltaArticulo");
                 datos.setearParametro("@codigo", nuevo.Codigo);
@@ -178,7 +181,7 @@ namespace Service
                 datos.setearConsulta("delete from ARTICULOS where id = @id");
                 datos.setearParametro("@id", Id);
                 datos.ejecutarAccion();
-                
+
             }
             catch (Exception ex)
             {
@@ -203,10 +206,32 @@ namespace Service
                 datos.setearParametro("@id", articulo.Id);
 
                 datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+            finally { datos.cerrarConexion(); }
 
+        }
 
+        public void modificarConSP(Articulo articulo)
+        {
+            accesoDatos datos = new accesoDatos();
+            try
+            {
+                datos.setearProcedimiento("storedModificarArticulo");
+                datos.setearParametro("@codigo", articulo.Codigo);
+                datos.setearParametro("@nombre", articulo.Nombre);
+                datos.setearParametro("@descripcion", articulo.Descripcion);
+                datos.setearParametro("@imagenUrl", articulo.ImagenUrl);
+                datos.setearParametro("@idMarca", articulo.Marca);
+                datos.setearParametro("@idCategoria", articulo.Categoria);
+                //datos.setearParametro("@Precio", articulo.Precio);
+                datos.setearParametro("@id", articulo.Id);
 
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
@@ -220,7 +245,7 @@ namespace Service
         public List<Articulo> filtrar(string campo, string criterio, string filtro)
         {
             List<Articulo> lista = new List<Articulo>();
-            accesoDatos datos = new accesoDatos();  
+            accesoDatos datos = new accesoDatos();
             try
             {
                 string consulta = "select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.IdMarca, A.IdCategoria from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id = A.IdMarca and C.Id = A.IdCategoria And ";
@@ -326,5 +351,6 @@ namespace Service
             }
         }
 
+      
     }
 }
