@@ -8,7 +8,7 @@
         DataKeyNames="Id"
         OnSelectedIndexChanged="dgvArticulos_SelectedIndexChanged"
         OnPageIndexChanging="dgvArticulos_PageIndexChanging"
-        AllowPaging="true" PageSize="6" >
+        AllowPaging="true" PageSize="5" >
         
         <Columns>
             <asp:BoundField HeaderText="Código" DataField="Codigo" />

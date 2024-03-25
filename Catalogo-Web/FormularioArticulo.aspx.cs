@@ -22,11 +22,12 @@ namespace Catalogo_Web
 
             try
             {
+                //Configuracion inicial
                 if (!IsPostBack)
                 {
                     MarcaService marcaService = new MarcaService();
                     CategoriaService categoriaService = new CategoriaService();
-                   
+
                     ddlMarca.DataSource = marcaService.listar();
                     ddlMarca.DataValueField = "Id";
                     ddlMarca.DataTextField = "Descripcion";
@@ -38,6 +39,30 @@ namespace Catalogo_Web
                     ddlCategoria.DataBind();
                 }
 
+                //Configuracion si estamos MODIFICANDO
+                string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+                if (id != "" && !IsPostBack)
+                {
+                    ArticuloService service = new ArticuloService();
+                    //List<Articulo> lista = service.Listar(id);
+                    //Articulo seleccionado = lista[0];
+                    Articulo seleccionado = (service.Listar(id))[0];
+
+                    //Pre cargar todos los campos...
+                    txtId.Text = id;
+                    txtCodigo.Text = seleccionado.Codigo;
+                    txtNombre.Text = seleccionado.Nombre;
+                    txtDescripcion.Text = seleccionado.Descripcion;
+                    txtImagenUrl.Text = seleccionado.ImagenUrl;
+                    //txtPrecio.Text = seleccionado.Precio;
+
+                    //Precarga de desplegables seleccionado
+                    ddlMarca.SelectedItem.Text = seleccionado.Marca.ToString();
+                    ddlCategoria.SelectedItem.Text = seleccionado.Categoria.ToString();
+
+                    //Forzar a la imagen a cargar
+                    txtImagenUrl_TextChanged(sender, e);
+                }
             }
             catch (Exception ex)
             {
@@ -66,8 +91,18 @@ namespace Catalogo_Web
                 nuevo.Marca = ddlMarca.SelectedValue;
                 nuevo.Categoria = ddlCategoria.SelectedValue;
 
-                service.agregarConSP(nuevo);
-                Response.Redirect("Default.aspx", true);
+                //SI VOY A MODIFICAR.....
+                if (Request.QueryString["id"] != null)
+                {
+                    nuevo.Id = int.Parse(txtId.Text);
+                    service.modificarConSP(nuevo);
+                }
+
+
+                else
+                    service.agregarConSP(nuevo);
+
+                Response.Redirect("Default.aspx", false);
 
             }
             catch (Exception ex)
@@ -86,7 +121,7 @@ namespace Catalogo_Web
 
         protected void txtImagenUrl_TextChanged(object sender, EventArgs e)
         {
-            imgArticulo.ImageUrl = txtImagenUrl.Text;   
+            imgArticulo.ImageUrl = txtImagenUrl.Text;
         }
     }
 }
