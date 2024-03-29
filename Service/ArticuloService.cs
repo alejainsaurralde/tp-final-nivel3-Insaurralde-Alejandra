@@ -23,7 +23,7 @@ namespace Service
 
             try
             {
-                conexion.ConnectionString = "server =.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";
+                conexion.ConnectionString = "server =.\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
                 comando.CommandText = "select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id = A.IdMarca and C.Id = A.IdCategoria ";
 
@@ -93,7 +93,7 @@ namespace Service
                     aux.Marca = (string)datos.Lector["Marca"];
                     //aux.Categoria = (string)lector["IdCategoria"];
                     aux.Categoria = (string)datos.Lector["Categoria"];
-                    //aux.Precio = (decimal)datos.Lector["Precio"];
+                    aux.Precio = (decimal)datos.Lector["Precio"];
 
 
                     lista.Add(aux);
@@ -142,7 +142,7 @@ namespace Service
 
             try
             {
-                //                @codigo varchar(50),
+                //@codigo varchar(50),
                 //@nombre varchar(50),
                 //@descripcion varchar(150),
                 //@idMarca int,
@@ -157,7 +157,7 @@ namespace Service
                 datos.setearParametro("@idMarca", nuevo.Marca);
                 datos.setearParametro("@IdCategoria", nuevo.Categoria);
                 datos.setearParametro("@imagenUrl", nuevo.ImagenUrl);
-                //datos.setearParametro("@precio", nuevo.Precio);
+                datos.setearParametro("@precio", nuevo.Precio);
                 datos.ejecutarAccion();
 
             }
@@ -195,15 +195,15 @@ namespace Service
             accesoDatos datos = new accesoDatos();
             try
             {
-                datos.setearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, ImagenUrl = @imagen, IdMarca = @idMarca, IdCategoria = @idCategoria where Id = @id");
+                datos.setearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, ImagenUrl = @imagen, IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio where Id = @id");
+                datos.setearParametro("@id", articulo.Id);
                 datos.setearParametro("@codigo", articulo.Codigo);
                 datos.setearParametro("@nombre", articulo.Nombre);
                 datos.setearParametro("@descripcion", articulo.Descripcion);
                 datos.setearParametro("@imagen", articulo.ImagenUrl);
                 datos.setearParametro("@idMarca", articulo.Marca);
                 datos.setearParametro("@idCategoria", articulo.Categoria);
-                datos.setearParametro("@Precio", articulo.Precio);
-                datos.setearParametro("@id", articulo.Id);
+                datos.setearParametro("@precio", articulo.Precio);
 
                 datos.ejecutarAccion();
             }
@@ -222,14 +222,14 @@ namespace Service
             try
             {
                 datos.setearProcedimiento("storedModificarArticulo");
+                datos.setearParametro("@id", articulo.Id);
                 datos.setearParametro("@codigo", articulo.Codigo);
                 datos.setearParametro("@nombre", articulo.Nombre);
                 datos.setearParametro("@descripcion", articulo.Descripcion);
                 datos.setearParametro("@imagenUrl", articulo.ImagenUrl);
                 datos.setearParametro("@idMarca", articulo.Marca);
                 datos.setearParametro("@idCategoria", articulo.Categoria);
-                //datos.setearParametro("@Precio", articulo.Precio);
-                datos.setearParametro("@id", articulo.Id);
+                datos.setearParametro("@Precio", articulo.Precio);
 
                 datos.ejecutarAccion();
             }
