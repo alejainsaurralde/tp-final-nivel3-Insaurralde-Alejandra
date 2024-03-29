@@ -14,11 +14,14 @@ namespace Catalogo_Web
 {
     public partial class FormularioArticulo : System.Web.UI.Page
     {
+        public bool ConfirmaEliminacion { get; set; }
+
         //SUBIR LOS DROPDOWNS
         protected void Page_Load(object sender, EventArgs e)
         {
             //inhabilita el id
             txtId.Enabled = false;
+            ConfirmaEliminacion = false;
 
             try
             {
@@ -46,9 +49,14 @@ namespace Catalogo_Web
                     ArticuloService service = new ArticuloService();
                     //List<Articulo> lista = service.Listar(id);
                     //Articulo seleccionado = lista[0];
-                    Articulo seleccionado = (service.Listar(id))[0];
+                    Articulo seleccionado = service.Listar(id)[0];
+
+
+                    //Guardo articulo seleccionado en la session
+                    Session.Add("articuloSeleccionado", seleccionado);
 
                     //Pre cargar todos los campos...
+
                     txtId.Text = id;
                     txtCodigo.Text = seleccionado.Codigo;
                     txtNombre.Text = seleccionado.Nombre;
@@ -57,8 +65,10 @@ namespace Catalogo_Web
                     //txtPrecio.Text = seleccionado.Precio;
 
                     //Precarga de desplegables seleccionado
+
+                    //RESOLVER LA PRECARGA DE DATOS DEL DESPLEGABLE
                     ddlMarca.SelectedItem.Text = seleccionado.Marca.ToString();
-                    ddlCategoria.SelectedItem.Text = seleccionado.Categoria.ToString();
+                    ddlCategoria.SelectedValue = seleccionado.ToString();
 
                     //Forzar a la imagen a cargar
                     txtImagenUrl_TextChanged(sender, e);
@@ -88,8 +98,8 @@ namespace Catalogo_Web
                 //nuevo.Precio = int.Parse(txtPrecio.Text);
 
                 //DESPLEGABLES
-                nuevo.Marca = ddlMarca.SelectedValue;
-                nuevo.Categoria = ddlCategoria.SelectedValue;
+                nuevo.Marca = ddlMarca.SelectedValue.ToString();
+                nuevo.Categoria = ddlCategoria.SelectedValue.ToString();
 
                 //SI VOY A MODIFICAR.....
                 if (Request.QueryString["id"] != null)
@@ -102,7 +112,7 @@ namespace Catalogo_Web
                 else
                     service.agregarConSP(nuevo);
 
-                Response.Redirect("Default.aspx", false);
+                Response.Redirect("ListaArticulos.aspx", false);
 
             }
             catch (Exception ex)
@@ -114,14 +124,32 @@ namespace Catalogo_Web
 
         }
 
-        protected void btnInactivar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void txtImagenUrl_TextChanged(object sender, EventArgs e)
         {
             imgArticulo.ImageUrl = txtImagenUrl.Text;
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ConfirmaEliminacion = true;
+        }
+
+        protected void btnConfirmaEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkConfirmaEliminacion.Checked)
+                {
+                    ArticuloService service = new ArticuloService();
+                    service.eliminar(int.Parse(txtId.Text));
+                    Response.Redirect("ListaArticulos.aspx");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+            }
         }
     }
 }
