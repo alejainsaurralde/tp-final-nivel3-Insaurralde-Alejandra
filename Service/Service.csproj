@@ -44,8 +44,10 @@
     <Compile Include="accesoDatos.cs" />
     <Compile Include="ArticuloService.cs" />
     <Compile Include="CategoriaService.cs" />
+    <Compile Include="EmailService.cs" />
     <Compile Include="MarcaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsuarioService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dominio\Dominio.csproj">
