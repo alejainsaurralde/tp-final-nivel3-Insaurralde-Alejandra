@@ -77,7 +77,6 @@ namespace Catalogo_Web
             catch (Exception ex)
             {
                 Session.Add("error", ex);
-                throw;
                 //redirigir a una pantalla de error
             }
 
@@ -118,7 +117,6 @@ namespace Catalogo_Web
             catch (Exception ex)
             {
                 Session.Add("error", ex);
-                throw;
                 //Redirigir a pantalla error
             }
 

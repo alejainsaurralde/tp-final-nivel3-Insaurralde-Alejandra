@@ -38,6 +38,10 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link" href="Registro.aspx">Registrarse</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link disabled" aria-disabled="true">Favoritos</a>
                         </li>
 
@@ -54,8 +58,9 @@
                         else
                         {
            %>--%>
+                    <asp:Button Text="Login" ID="btnLogin" class="btn btn-outline-success me-2" OnClick="btnSalir_Click" runat="server" />
                     <asp:Button Text="Salir" ID="btnSalir" CssClass="btn btn-outline-primary me-2" OnClick="btnSalir_Click" runat="server" />
-                    <asp:Label ID="lblUser" Text="user" CssClass="btn btn-outline-primary me-2" runat="server" />
+                    <asp:Label ID="lblUser" Text="user" class="btn btn-outline-danger me-2" runat="server" />
                     <%--                    <%} %>--%>
                     <asp:Image ID="imgAvatar" Style="height: 40px; width: 40px; border-radius: 50%;"
                         ImageUrl="https://simg.nicepng.com/png/small/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"

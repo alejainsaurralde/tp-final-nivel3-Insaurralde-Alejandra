@@ -5,17 +5,25 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Service;
+using Dominio;
 
 
 namespace Catalogo_Web
 {
     public partial class Catalogo : System.Web.UI.Page
+
     {
+        public bool FiltroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            ArticuloService service = new ArticuloService();
-            dgvArticulos.DataSource = service.listarConSP();
-            dgvArticulos.DataBind();
+            FiltroAvanzado = chkAvanzado.Checked;
+            if (!IsPostBack)
+            {
+                ArticuloService service = new ArticuloService();
+                Session.Add("ListaArticulos", service.listarConSP());
+                dgvArticulos.DataSource = Session["ListaArticulos"];
+                dgvArticulos.DataBind();
+            }
 
         }
 
@@ -29,6 +37,55 @@ namespace Catalogo_Web
         {
             dgvArticulos.PageIndex = e.NewPageIndex;
             dgvArticulos.DataBind();
+        }
+
+        protected void filtro_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> lista = (List<Articulo>)Session["ListaArticulos"];
+            List<Articulo> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()));
+            dgvArticulos.DataSource = listaFiltrada;
+            dgvArticulos.DataBind();
+        }
+
+        protected void chkAvanzado_CheckedChanged(object sender, EventArgs e)
+        {
+            FiltroAvanzado = chkAvanzado.Checked;
+            txtFiltro.Enabled = !FiltroAvanzado;
+        }
+
+        protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlCriterio.Items.Clear();
+            if (ddlCampo.SelectedItem.ToString() == "Número")
+            {
+                ddlCriterio.Items.Add("Igual a");
+                ddlCriterio.Items.Add("Mayor a");
+                ddlCriterio.Items.Add("Menor a");
+            }
+            else
+            {
+                ddlCriterio.Items.Add("Contiene");
+                ddlCriterio.Items.Add("Comienza con");
+                ddlCriterio.Items.Add("Termina con");
+            }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ArticuloService service = new ArticuloService();
+                dgvArticulos.DataSource = service.filtrar(
+                    ddlCampo.SelectedItem.ToString(),
+                    ddlCriterio.SelectedItem.ToString(),
+                    txtFiltroAvanzado.Text);
+                dgvArticulos.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                throw;
+            }
         }
     }
 }
