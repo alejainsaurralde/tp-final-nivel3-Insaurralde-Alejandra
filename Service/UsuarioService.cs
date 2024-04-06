@@ -9,6 +9,28 @@ namespace Service
 {
     public class UsuarioService
     {
+        public void actualizar(Usuario user)
+        {
+                accesoDatos datos = new accesoDatos();
+            try
+            {
+                datos.setearConsulta("Update USERS set urlImagenPerfil = @urlImagenPerfil where Id = @id");
+                datos.setearParametro("@urlImagenPerfil", user.ImagenPerfil);
+                datos.setearParametro("@id", user.Id);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         //DATOS QUE TENGO:
         //ID
         //EMAIL
