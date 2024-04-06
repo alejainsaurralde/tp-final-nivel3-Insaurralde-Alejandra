@@ -13,6 +13,10 @@
 <body>
     <form id="form1" runat="server">
 
+                <%--        <nav class="navbar navbar-dark bg-dark fixed-top">--%>
+        <%--                            <nav class="navbar navbar-dark" style="background-color: #000000;">--%>
+
+
         <nav class="navbar" style="background-color: #e3f2fd;">
 
             <a class="navbar-brand" href="/">Tienda Virtual</a>
@@ -42,6 +46,10 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link" href="MiPerfil.aspx">Mi Perfil</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link disabled" aria-disabled="true">Favoritos</a>
                         </li>
 
@@ -58,8 +66,8 @@
                         else
                         {
            %>--%>
-                    <asp:Button Text="Login" ID="btnLogin" class="btn btn-outline-success me-2" OnClick="btnSalir_Click" runat="server" />
-                    <asp:Button Text="Salir" ID="btnSalir" CssClass="btn btn-outline-primary me-2" OnClick="btnSalir_Click" runat="server" />
+                    <asp:Button Text="Login" ID="btnLogin" OnClick="btnLogin_Click" class="btn btn-outline-success me-2" runat="server" />
+                    <asp:Button Text="Salir" ID="btnSalir" CssClass="btn btn-outline-primary me-2" runat="server" />
                     <asp:Label ID="lblUser" Text="user" class="btn btn-outline-danger me-2" runat="server" />
                     <%--                    <%} %>--%>
                     <asp:Image ID="imgAvatar" Style="height: 40px; width: 40px; border-radius: 50%;"

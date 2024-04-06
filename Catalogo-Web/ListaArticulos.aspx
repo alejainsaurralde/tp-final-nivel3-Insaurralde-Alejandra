@@ -20,7 +20,7 @@
         </div>
     </div>
 
-<%--    HACER BOTON DE LIMPIAR FILTRO--%>
+    <%--    HACER BOTON DE LIMPIAR FILTRO--%>
 
     <div class="col-6" style="display: flex; flex-direction: column; justify-content: flex-end;">
         <div class="mb-3">
@@ -40,7 +40,7 @@
             <div class="mb-3">
                 <asp:Label Text="Campo" ID="lblCampo" runat="server" />
                 <asp:DropDownList ID="ddlCampo" CssClass="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged">
-                    <asp:ListItem Text="Código" />
+                    <asp:ListItem Text="Precio" />
                     <asp:ListItem Text="Nombre" />
                     <asp:ListItem Text="Marca" />
                 </asp:DropDownList>
@@ -68,6 +68,12 @@
         <div class="col-3">
             <div class="mb-3">
                 <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" CssClass="btn btn-primary" />
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="mb-3">
+                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar Filtro" OnClick="btnLimpiar_Click"  CssClass="btn btn-outline-success" />
             </div>
         </div>
     </div>

@@ -73,6 +73,8 @@
     <Content Include="DetalleArticulo.aspx" />
     <Content Include="FormularioArticulo.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Login.aspx" />
+    <Content Include="MiPerfil.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -114,6 +116,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MiPerfil.aspx.cs">
+      <DependentUpon>MiPerfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MiPerfil.aspx.designer.cs">
+      <DependentUpon>MiPerfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>

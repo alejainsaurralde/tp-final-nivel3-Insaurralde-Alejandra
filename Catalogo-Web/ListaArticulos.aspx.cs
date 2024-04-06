@@ -16,6 +16,13 @@ namespace Catalogo_Web
         public bool FiltroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (!Seguridad.esAdmin(Session["usuario"]))
+            {
+                Session.Add("error", "Se requieren permisos de admin para acceder");
+                Response.Redirect("Error.aspx");
+            }
+
             FiltroAvanzado = chkAvanzado.Checked;
             if (!IsPostBack)
             {
@@ -38,7 +45,7 @@ namespace Catalogo_Web
             dgvArticulos.PageIndex = e.NewPageIndex;
             dgvArticulos.DataBind();
         }
-
+        
         protected void filtro_TextChanged(object sender, EventArgs e)
         {
             List<Articulo> lista = (List<Articulo>)Session["ListaArticulos"];
@@ -56,7 +63,7 @@ namespace Catalogo_Web
         protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlCriterio.Items.Clear();
-            if (ddlCampo.SelectedItem.ToString() == "Número")
+            if (ddlCampo.SelectedItem.ToString() == "Precio")
             {
                 ddlCriterio.Items.Add("Igual a");
                 ddlCriterio.Items.Add("Mayor a");
@@ -86,6 +93,12 @@ namespace Catalogo_Web
                 Session.Add("error", ex);
                 throw;
             }
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("ListaArticulos.aspx");
         }
     }
 }
