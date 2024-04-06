@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Dominio;
+using Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Dominio;
-using Service;
 
 namespace Catalogo_Web
 {
-    public partial class Login1 : System.Web.UI.Page
+    public partial class Login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,6 +40,7 @@ namespace Catalogo_Web
                 Session.Add("error", ex);
                 Response.Redirect("Error.aspx");
             }
+
         }
     }
 }

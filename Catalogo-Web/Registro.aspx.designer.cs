@@ -11,7 +11,7 @@ namespace Catalogo_Web
 {
 
 
-    public partial class Login
+    public partial class Registro
     {
 
         /// <summary>

@@ -35,7 +35,7 @@
             <ItemTemplate>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="<%#Eval("ImagenUrl")%>" class="card-img-top" alt="...">
+                        <img src="<%#Eval("ImagenUrl")%>" style="width: 150px;" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("Nombre")%></h5>
                             <p class="card-text"><%#Eval("Descripcion")%></p>
@@ -43,7 +43,7 @@
                             <asp:Button CssClass="btn btn-primary" runat="server" ID="btnEjemplo" Text="Ejemplo" CommandArgument= '<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="btnEjemplo_Click" />
                         </div>
                         <div class="card-footer">
-                            <small class="text-body-secondary">Last updated 3 mins ago</small>
+                            <small class="text-body-secondary">Última actualización hace 3 días</small>
                         </div>
                     </div>
                 </div>

@@ -73,7 +73,7 @@
 
         <div class="col-3">
             <div class="mb-3">
-                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar Filtro" OnClick="btnLimpiar_Click"  CssClass="btn btn-outline-success" />
+                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar Filtro" OnClick="btnLimpiar_Click" CssClass="btn btn-outline-success" />
             </div>
         </div>
     </div>
