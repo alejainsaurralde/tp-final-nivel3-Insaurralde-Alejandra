@@ -47,6 +47,7 @@
     <Compile Include="EmailService.cs" />
     <Compile Include="MarcaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguridad.cs" />
     <Compile Include="UsuarioService.cs" />
   </ItemGroup>
   <ItemGroup>

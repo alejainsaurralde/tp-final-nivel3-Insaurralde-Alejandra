@@ -286,13 +286,13 @@ namespace Service
                     switch (criterio)
                     {
                         case "Comienza con":
-                            consulta += "A.Descripcion like '" + filtro + "%' ";
+                            consulta += "M.Descripcion like '" + filtro + "%' ";
                             break;
                         case "Termina con":
-                            consulta += "A.Descripcion like '%" + filtro + "'";
+                            consulta += "M.Descripcion like '%" + filtro + "'";
                             break;
                         default:
-                            consulta += "A.Descripcion like '%" + filtro + "%'";
+                            consulta += "M.Descripcion like '%" + filtro + "%'";
                             break;
                     }
                 }
@@ -351,6 +351,6 @@ namespace Service
             }
         }
 
-      
+
     }
 }

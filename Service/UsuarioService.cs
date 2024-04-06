@@ -26,7 +26,7 @@ namespace Service
                 datos.setearProcedimiento("insertarNuevo");
                 datos.setearParametro("@email", nuevo.Email);
                 datos.setearParametro("@pass", nuevo.Pass);
-                return datos.ejecutarAccionScalar();               
+                return datos.ejecutarAccionScalar();
             }
             catch (Exception ex)
             {
@@ -36,6 +36,34 @@ namespace Service
             finally
             {
                 datos.cerrarConexion();
+            }
+        }
+        public bool Login(Usuario usuario)
+        {
+            accesoDatos datos = new accesoDatos();
+            try
+            {
+                datos.setearConsulta("Select id, email, pass, admin from USERS where email = @email And pass = @pass");
+                datos.setearParametro("@email", usuario.Email);
+                datos.setearParametro("@pass", usuario.Pass);
+                datos.ejecutarLectura();
+                if (datos.Lector.Read())
+                {
+                    usuario.Id = (int)datos.Lector["id"];
+                    usuario.Admin = (bool)datos.Lector["admin"];    
+                    return true;
+                }
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally 
+            {
+                datos.cerrarConexion(); 
             }
         }
     }
