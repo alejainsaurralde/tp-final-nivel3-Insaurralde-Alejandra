@@ -11,11 +11,15 @@ namespace Service
     {
         public void actualizar(Usuario user)
         {
-                accesoDatos datos = new accesoDatos();
+            accesoDatos datos = new accesoDatos();
             try
             {
-                datos.setearConsulta("Update USERS set urlImagenPerfil = @urlImagenPerfil where Id = @id");
-                datos.setearParametro("@urlImagenPerfil", user.ImagenPerfil);
+                datos.setearConsulta("Update USERS set urlImagenPerfil = @urlImagenPerfil, nombre = @nombre, apellido = @apellido where Id = @id");
+                //datos.setearParametro("@imagen", user.ImagenPerfil != null ? user.ImagenPerfil : (object)DBNull.Value);
+                datos.setearParametro("@urlImagenPerfil",(object)user.ImagenPerfil ?? DBNull.Value);
+                //datos.setearParametro("@urlImagenPerfil", user.ImagenPerfil != null ? user.ImagenPerfil : "");
+                datos.setearParametro("@nombre", user.Nombre);
+                datos.setearParametro("@apellido", user.Apellido);
                 datos.setearParametro("@id", user.Id);
                 datos.ejecutarAccion();
 
@@ -65,14 +69,23 @@ namespace Service
             accesoDatos datos = new accesoDatos();
             try
             {
-                datos.setearConsulta("Select id, email, pass, admin from USERS where email = @email And pass = @pass");
+                datos.setearConsulta("Select id, email, pass, admin, urlImagenPerfil, nombre, apellido from USERS where email = @email And pass = @pass");
                 datos.setearParametro("@email", usuario.Email);
                 datos.setearParametro("@pass", usuario.Pass);
                 datos.ejecutarLectura();
                 if (datos.Lector.Read())
                 {
                     usuario.Id = (int)datos.Lector["id"];
-                    usuario.Admin = (bool)datos.Lector["admin"];    
+                    usuario.Admin = (bool)datos.Lector["admin"];
+
+                    if (!(datos.Lector["urlImagenPerfil"] is DBNull))
+                        usuario.ImagenPerfil = (string)datos.Lector["urlImagenPerfil"];
+
+                    if (!(datos.Lector["nombre"] is DBNull))
+                        usuario.Nombre = (string)datos.Lector["nombre"];
+                    if (!(datos.Lector["apellido"] is DBNull))
+                        usuario.Apellido = (string)datos.Lector["apellido"];
+
                     return true;
                 }
                 return false;
@@ -83,9 +96,9 @@ namespace Service
 
                 throw ex;
             }
-            finally 
+            finally
             {
-                datos.cerrarConexion(); 
+                datos.cerrarConexion();
             }
         }
     }
