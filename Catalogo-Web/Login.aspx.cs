@@ -22,6 +22,11 @@ namespace Catalogo_Web
             UsuarioService service = new UsuarioService();
             try
             {
+                if (Validacion.validaTextoVacio(txtEmail) || Validacion.validaTextoVacio(txtPassword))
+                {
+                    Session.Add("error", "Debes completar ambos campos...");
+                    Response.Redirect("Error.aspx");
+                }
                 usuario.Email = txtEmail.Text;
                 usuario.Pass = txtPassword.Text;
                 if (service.Login(usuario))
@@ -32,9 +37,10 @@ namespace Catalogo_Web
                 else
                 {
                     Session.Add("error", "User o pass incorrectos");
-                    Response.Redirect("Error.aspx");
+                    Response.Redirect("Error.aspx", false);
                 }
             }
+            catch (System.Threading.ThreadAbortException ex) { }
             catch (Exception ex)
             {
                 Session.Add("error", ex);
@@ -42,5 +48,15 @@ namespace Catalogo_Web
             }
 
         }
+
+        //private void Page_Error(object sender, EventArgs e)
+        //{
+        //    Exception exc = Server.GetLastError();
+
+
+        //    Session.Add("error", exc.ToString());
+        //    //Response.Redirect("Error.aspx");
+        //    Server.Transfer("Error.aspx");
+        //}
     }
 }

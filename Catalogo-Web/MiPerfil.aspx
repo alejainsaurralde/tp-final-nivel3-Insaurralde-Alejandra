@@ -1,6 +1,31 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="MiPerfil.aspx.cs" Inherits="Catalogo_Web.MiPerfil" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+   <%-- <style>
+        .validacion {
+            color: red;
+            font-size: 10px;
+        }
+    </style>
+    <script>
+        function validar() {
+
+            //capturar el control. 
+            const txtApellido = document.getElementById("txtApellido");
+            const txtNombre = document.getElementById("txtNombre");
+            if (txtApellido.value == "") {
+                txtApellido.classList.add("is-invalid");
+                txtApellido.classList.remove("is-valid");
+                txtNombre.classList.add("is-valid");
+                return false;
+            }
+            txtApellido.classList.remove("is-invalid");
+            txtApellido.classList.add("is-valid");
+            return true;
+        }
+    </script>--%>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Mi Perfil 👍</h1>

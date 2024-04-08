@@ -80,12 +80,10 @@
                         else
                         {
            %>
-                    <asp:Button Text="Login" ID="btnLogin" OnClick="btnLogin_Click" class="btn btn-outline-success me-2" runat="server" />
                     <asp:Button Text="Salir" ID="btnSalir" OnClick="btnSalir_Click" CssClass="btn btn-outline-primary me-2" runat="server" />
-                    <asp:Label ID="lblUser" Text="user" class="btn btn-outline-danger me-2" runat="server" />
+                    <asp:Label Text="user" ID="lblUser" class="btn btn-outline-danger me-2" runat="server" />
                     <%} %>
                     <asp:Image ID="imgAvatar" Style="height: 40px; width: 40px; border-radius: 50%;"
-                        ImageUrl="https://simg.nicepng.com/png/small/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png"
                         runat="server" />
                 </div>
 

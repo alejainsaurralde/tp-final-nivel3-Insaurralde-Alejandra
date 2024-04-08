@@ -76,8 +76,8 @@ namespace Catalogo_Web
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
-                //redirigir a una pantalla de error
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
 
 
@@ -116,8 +116,8 @@ namespace Catalogo_Web
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
-                //Redirigir a pantalla error
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
 
         }
@@ -146,7 +146,8 @@ namespace Catalogo_Web
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
         }
     }
