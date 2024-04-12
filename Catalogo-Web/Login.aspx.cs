@@ -48,7 +48,7 @@ namespace Catalogo_Web
             }
 
         }
-
+        //MANEJO DE ERROR
         //private void Page_Error(object sender, EventArgs e)
         //{
         //    Exception exc = Server.GetLastError();

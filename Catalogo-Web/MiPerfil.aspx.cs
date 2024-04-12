@@ -40,9 +40,13 @@ namespace Catalogo_Web
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-      
+
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+
                 UsuarioService service = new UsuarioService();
                 Usuario user = (Usuario)Session["usuario"];
                 //Escribir img si se cargó algo.
