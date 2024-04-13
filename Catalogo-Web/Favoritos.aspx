@@ -4,8 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-   <%-- ESTA PAÁGINA ES PARA MEJORAR LA LISTA DE FAVORITOS,
-    NO SE COMO SACAR O PONER DE LALISTA O AGRGARLE UN CHECK--%>
+   <%-- ESTA PÁGINA ES PARA MEJORAR LA LISTA DE FAVORITOS,
+    NO SE COMO SACAR O PONER DE LA LISTA O AGREGARLE UN CHECK--%>
   
     <h1>Favoritos ❤️</h1>
 
