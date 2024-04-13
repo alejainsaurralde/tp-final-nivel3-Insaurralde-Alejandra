@@ -100,7 +100,7 @@ namespace Catalogo_Web
                 nuevo.ImagenUrl = txtImagenUrl.Text;
                 //nuevo.Precio = int.Parse(txtPrecio.Text);
 
-                //DESPLEGABLES (NO PUDE CONFIGURARLOS CORRECTAMENTE)
+                
                 nuevo.Marca = ddlMarca.SelectedValue.ToString();
                 nuevo.Categoria = ddlCategoria.SelectedValue.ToString();
 
