@@ -38,7 +38,8 @@ namespace Catalogo_Web
 
         protected void dgvArticulos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            
+            dgvArticulos.PageIndex = e.NewPageIndex;
+            dgvArticulos.DataBind();
         }
         
     }

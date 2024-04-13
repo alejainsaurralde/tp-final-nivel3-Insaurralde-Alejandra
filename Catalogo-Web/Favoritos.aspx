@@ -4,9 +4,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-   <%-- ESTA PÁGINA ES PARA MEJORAR LA LISTA DE FAVORITOS,
+    <%-- ESTA PÁGINA ES PARA MEJORAR LA LISTA DE FAVORITOS, 
+       NO LOGRE PAGINAR LA LISTA
     NO SE COMO SACAR O PONER DE LA LISTA O AGREGARLE UN CHECK--%>
-  
+
     <h1>Favoritos ❤️</h1>
 
     <asp:GridView ID="dgvArticulos" CssClass="table" AutoGenerateColumns="false" runat="server"

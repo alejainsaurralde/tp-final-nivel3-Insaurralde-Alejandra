@@ -144,7 +144,7 @@ namespace Catalogo_Web
                 {
                     ArticuloService service = new ArticuloService();
                     service.eliminar(int.Parse(txtId.Text));
-                    Response.Redirect("ListaArticulos.aspx");
+                    Response.Redirect("ListaArticulos.aspx", false);
 
                 }
             }

@@ -71,10 +71,10 @@
                 </div>
             </div>
         </div>
-    <%} %>
+        <%} %>
     </div>
 
-   <%-- NO PUDE HACER FUNCIONAR EL PAGINADOR--%>
+    <%-- NO PUDE HACER FUNCIONAR EL PAGINADOR--%>
 
     <asp:GridView ID="dgvArticulos" runat="server" DataKeyNames="Id"
         CssClass="table" AutoGenerateColumns="false"

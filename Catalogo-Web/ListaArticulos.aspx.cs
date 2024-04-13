@@ -91,6 +91,7 @@ namespace Catalogo_Web
                 Session.Add("error", ex);
                 throw;
             }
-        }      
+        }
+
     }
 }
