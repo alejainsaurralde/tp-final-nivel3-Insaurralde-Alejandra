@@ -24,6 +24,7 @@ namespace Catalogo_Web
                         txtEmail.ReadOnly = true;
                         txtNombre.Text = user.Nombre;
                         txtApellido.Text = user.Apellido;
+                        //DEJO DE EJEMPLO LO DE LA FECHA DE NACIMIENTO PERO NO TENGO LA INF EN LA DB
                         txtFechaNacimiento.Text = user.FechaNacimiento.ToString("yyyy-MM-dd");
                         if (!string.IsNullOrEmpty(user.ImagenPerfil))
                             imgNuevoPerfil.ImageUrl = "~/Images/" + user.ImagenPerfil;

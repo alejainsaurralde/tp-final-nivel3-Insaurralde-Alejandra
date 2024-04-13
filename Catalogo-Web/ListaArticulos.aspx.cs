@@ -10,7 +10,7 @@ using Dominio;
 
 namespace Catalogo_Web
 {
-    public partial class Catalogo : System.Web.UI.Page
+    public partial class ListaArticulos : System.Web.UI.Page
 
     {
         public bool FiltroAvanzado { get; set; }
@@ -27,28 +27,26 @@ namespace Catalogo_Web
             if (!IsPostBack)
             {
                 ArticuloService service = new ArticuloService();
-                Session.Add("ListaArticulos", service.listarConSP());
-                dgvArticulos.DataSource = Session["ListaArticulos"];
+                Session.Add("listaArticulos", service.listarConSP());
+                dgvArticulos.DataSource = Session["listaArticulos"];
                 dgvArticulos.DataBind();
             }
 
         }
-
-        protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string id = dgvArticulos.SelectedDataKey.Value.ToString();
-            Response.Redirect("FormularioArticulo.aspx?id=" + id);
-        }
-
         protected void dgvArticulos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dgvArticulos.PageIndex = e.NewPageIndex;
             dgvArticulos.DataBind();
         }
-        
+        protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = dgvArticulos.SelectedDataKey.Value.ToString();
+            Response.Redirect("FormularioArticulo.aspx?id=" + id);
+        }
+    
         protected void filtro_TextChanged(object sender, EventArgs e)
         {
-            List<Articulo> lista = (List<Articulo>)Session["ListaArticulos"];
+            List<Articulo> lista = (List<Articulo>)Session["listaArticulos"];
             List<Articulo> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()));
             dgvArticulos.DataSource = listaFiltrada;
             dgvArticulos.DataBind();
@@ -93,12 +91,6 @@ namespace Catalogo_Web
                 Session.Add("error", ex);
                 throw;
             }
-        }
-
-        protected void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            Session.Clear();
-            Response.Redirect("ListaArticulos.aspx");
-        }
+        }      
     }
 }

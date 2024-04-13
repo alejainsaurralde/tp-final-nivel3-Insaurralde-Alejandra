@@ -25,9 +25,10 @@ namespace Catalogo_Web
             }
         }
 
-        protected void btnEjemplo_Click(object sender, EventArgs e)
-        {
-            string valor = ((Button)sender).CommandArgument;
-        }
+        //protected void btnEjemplo_Click(object sender, EventArgs e)
+        //{
+        //    string valor = ((Button)sender).CommandArgument;
+        //}
+
     }
 }

@@ -1,9 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Favoritos.aspx.cs" Inherits="Catalogo_Web.Favoritos" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+   <%-- ESTA PAÁGINA ES PARA MEJORAR LA LISTA DE FAVORITOS,
+    NO SE COMO SACAR O PONER DE LALISTA O AGRGARLE UN CHECK--%>
+  
     <h1>Favoritos ❤️</h1>
-        <asp:GridView ID="dgvArticulos" CssClass="table" AutoGenerateColumns="false" runat="server"
+
+    <asp:GridView ID="dgvArticulos" CssClass="table" AutoGenerateColumns="false" runat="server"
         DataKeyNames="Id"
         OnSelectedIndexChanged="dgvArticulos_SelectedIndexChanged"
         OnPageIndexChanging="dgvArticulos_PageIndexChanging"
@@ -16,8 +22,8 @@
             <asp:BoundField HeaderText="Categoría" DataField="Categoria" />
             <asp:BoundField HeaderText="Descripción" DataField="Descripcion" />
             <asp:BoundField HeaderText="Precio" DataField="Precio" />
-            <asp:CommandField HeaderText="Favoritos" ShowSelectButton="true" SelectText="❤️" />
+            <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="✍" />
         </Columns>
     </asp:GridView>
-    <a href="Favoritos.aspx" class="btn btn-danger">Agregar a favoritos</a>
+    <a href="FormularioArticulo.aspx" class="btn btn-danger">Agregar a favoritos</a>
 </asp:Content>

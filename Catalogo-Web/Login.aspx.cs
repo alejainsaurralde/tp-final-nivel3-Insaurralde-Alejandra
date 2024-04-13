@@ -49,14 +49,14 @@ namespace Catalogo_Web
 
         }
         //MANEJO DE ERROR
-        //private void Page_Error(object sender, EventArgs e)
-        //{
-        //    Exception exc = Server.GetLastError();
+        private void Page_Error(object sender, EventArgs e)
+        {
+            Exception exc = Server.GetLastError();
 
 
-        //    Session.Add("error", exc.ToString());
-        //    //Response.Redirect("Error.aspx");
-        //    Server.Transfer("Error.aspx");
-        //}
+            Session.Add("error", exc.ToString());
+            //Response.Redirect("Error.aspx");
+            Server.Transfer("Error.aspx");
+        }
     }
 }
