@@ -12,11 +12,12 @@ namespace Catalogo_Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Seguridad.esAdmin(Session["usuario"]))
-            {
-                Session.Add("error", "Se requieren permisos de admin para acceder");
-                Response.Redirect("Error.aspx");
-            }
+            //SI SOLO QUIERO QUE LO MANEJE ADMIN
+            //if (!Seguridad.esAdmin(Session["usuario"]))
+            //{
+            //    Session.Add("error", "Se requieren permisos de admin para acceder");
+            //    Response.Redirect("Error.aspx");
+            //}
 
             if (!IsPostBack)
             {
