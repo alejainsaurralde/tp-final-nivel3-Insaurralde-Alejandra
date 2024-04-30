@@ -46,8 +46,6 @@ namespace Catalogo_Web
                     ddlCategoria.DataBind();
                 }
 
-                // PRECIO! NO PUEDO NI PRECARGAR EL PRECIO NI INGRESARLOS
-
                 //Configuracion si estamos MODIFICANDO
                 string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
                 if (id != "" && !IsPostBack)
@@ -68,7 +66,7 @@ namespace Catalogo_Web
                     txtNombre.Text = seleccionado.Nombre;
                     txtDescripcion.Text = seleccionado.Descripcion;
                     txtImagenUrl.Text = seleccionado.ImagenUrl;
-                    //txtPrecio.Text = seleccionado.Precio;
+                    txtPrecio.Text = seleccionado.Precio.ToString();
 
                     //Precarga de desplegables seleccionado
 
@@ -102,7 +100,7 @@ namespace Catalogo_Web
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Descripcion = txtDescripcion.Text;
                 nuevo.ImagenUrl = txtImagenUrl.Text;
-                //nuevo.Precio = int.Parse(txtPrecio.Text);
+                nuevo.Precio = decimal.Parse(txtPrecio.Text);
 
 
                 nuevo.Marca = ddlMarca.SelectedValue.ToString();

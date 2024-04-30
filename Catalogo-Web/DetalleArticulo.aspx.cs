@@ -54,7 +54,7 @@ namespace Catalogo_Web
                     txtNombre.Text = seleccionado.Nombre;
                     txtDescripcion.Text = seleccionado.Descripcion;
                     txtImagenUrl.Text = seleccionado.ImagenUrl;
-                    //txtPrecio.Text = seleccionado.Precio;
+                    txtPrecio.Text = seleccionado.Precio.ToString();
 
                     //Precarga de desplegables seleccionado
 

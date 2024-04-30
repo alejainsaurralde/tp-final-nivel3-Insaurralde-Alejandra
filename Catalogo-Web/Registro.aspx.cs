@@ -29,9 +29,10 @@ namespace Catalogo_Web
                 user.Id = usuarioService.insertarNuevo(user);
                 Session.Add("usuario", user);
 
+                Response.Redirect("MiPerfil.aspx", true);
+
                 emailService.armarCorreo(user.Email, "Bienvenida usuario", "Hola! Te damos la bienvenida a la aplicacion...");
                 emailService.enviarEmail();
-                Response.Redirect("Default.aspx", true);
             }
             catch (Exception ex)
             {

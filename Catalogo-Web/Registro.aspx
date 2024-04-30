@@ -16,7 +16,7 @@
                 <asp:TextBox CssClass="form-control" ID="txtPassword" placeholder="******" TextMode="Password" runat="server"></asp:TextBox>
             </div>
             <asp:Button ID="btnRegistrarse" CssClass="btn btn-primary" OnClick="btnRegistrarse_Click" runat="server" Text="Registrarse" />
-            <a href="/">Cancelar</a>
+            <a href="Default.aspx">Cancelar</a>
         </div>
     </div>
 
