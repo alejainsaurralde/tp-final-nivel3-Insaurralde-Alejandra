@@ -61,6 +61,8 @@
   <ItemGroup>
     <Content Include="script_db\ARTICULOS.sql" />
     <Content Include="script_db\CATALOGO_WEB_DB.sql" />
+    <Content Include="script_db\CATEGORIAS.sql" />
+    <Content Include="script_db\MARCAS.sql" />
     <Content Include="script_db\PROCEDURES.sql" />
     <Content Include="script_db\USERS.sql" />
   </ItemGroup>

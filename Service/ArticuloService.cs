@@ -95,6 +95,8 @@ namespace Service
                     aux.Categoria = (string)datos.Lector["Categoria"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
 
+                    //LISTA DE FAVORITOS
+                    //aux.IdArticulo = (int)datos.Lector["IdArticulo"];
 
                     lista.Add(aux);
                 }
