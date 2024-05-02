@@ -48,9 +48,9 @@
 
                         <%--TAREA A FUTURO PARA MEJORAR LA PANTALLA DE FAVORITOS--%>
 
-                       <%-- <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="Favoritos.aspx">Favoritos</a>
-                        </li>--%>
+                        </li>
 
 
                         <%--DESPLEGABLE (LO DEJO DE EJEMPLO PARA AGREGAR A FUTURO)--%>

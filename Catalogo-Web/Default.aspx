@@ -43,7 +43,10 @@
                             <%--<asp:Button CssClass="btn btn-primary" runat="server" ID="btnEjemplo" Text="Ejemplo" CommandArgument= '<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="btnEjemplo_Click" />--%>
                         </div>
                         <div class="card-footer">
-                            <small class="text-body-secondary">Última actualización hace 3 días</small>
+                            <asp:CheckBox ID="CheckBox1"  runat="server" />
+                            <small class="text-body-secondary">MI FAVORITO❤️</small>
+                            <a href="DetalleArticulo.aspx?id=<%#Eval("id") %>">Ver Favoritos</a>
+
                         </div>
                     </div>
                 </div>
