@@ -1,0 +1,9 @@
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\bin\Release\Service.dll
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\bin\Release\Service.pdb
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\bin\Release\Dominio.dll
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\bin\Release\Dominio.pdb
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\obj\Release\Service.csproj.AssemblyReference.cache
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\obj\Release\Service.csproj.CoreCompileInputs.cache
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\obj\Release\Service.csproj.Up2Date
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\obj\Release\Service.dll
+C:\Users\aleja\OneDrive\Escritorio\Proyecto-Nivel3\Service\obj\Release\Service.pdb

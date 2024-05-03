@@ -6,6 +6,7 @@ using Service;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 
 
@@ -23,7 +24,9 @@ namespace Service
 
             try
             {
-                conexion.ConnectionString = "server =.\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true";
+                conexion = new SqlConnection(ConfigurationManager.AppSettings["cadenaConexion"]);
+
+                //conexion.ConnectionString = "server =.\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
                 comando.CommandText = "select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id = A.IdMarca and C.Id = A.IdCategoria ";
 
